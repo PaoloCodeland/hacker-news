@@ -1,3 +1,3 @@
 export default {
-    // base: '/my-project/',
+    base: '/hacker-news/',
 };

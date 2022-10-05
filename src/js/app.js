@@ -1,4 +1,5 @@
 import toggleTheme from './functions/toggleTheme';
+import RouterHandler from './router';
 
 class App {
     constructor() {
@@ -6,6 +7,7 @@ class App {
         this.themeBtn = document.querySelector('.theme-btn');
 
         // Init
+        RouterHandler();
         this.eventHandlers();
     }
 
