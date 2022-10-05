@@ -1,0 +1,28 @@
+.theme-btn {
+    appearance: none;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    outline: none;
+    svg {
+        display: block;
+        &:last-child {
+            display: none;
+        }
+    }
+    &.is-dark {
+        svg {
+            display: none;
+            &:first-child {
+                display: none;
+            }
+            &:last-child {
+                display: block;
+            }
+        }
+    }
+}
