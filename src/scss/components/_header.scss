@@ -1,0 +1,75 @@
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2rem;
+    color: var(--white);
+    background: var(--primary);
+    background-image: var(--gradient);
+    nav {
+        flex-grow: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .brand {
+        display: flex;
+        align-items: center;
+        img {
+            width: 3rem;
+            margin-right: 1rem;
+        }
+        span {
+            font-size: 2.4rem;
+        }
+    }
+    .main-navigation {
+        display: flex;
+        li {
+            a {
+                display: block;
+                padding: 1.6rem 2rem;
+                transition: background 0.3s;
+                &:hover,
+                &:focus {
+                    background: var(--quaternary);
+                }
+                &.active {
+                    color: var(--primary);
+                    background: var(--secondary);
+                }
+            }
+        }
+    }
+    .theme-btn {
+        appearance: none;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        display: block;
+        padding: 1.6rem 2rem;
+        cursor: pointer;
+        outline: none;
+        &:hover,
+        &:focus {
+            background: var(--quaternary);
+        }
+        svg {
+            display: block;
+            &:last-child {
+                display: none;
+            }
+        }
+        &.is-dark {
+            svg {
+                display: none;
+                &:first-child {
+                    display: none;
+                }
+                &:last-child {
+                    display: block;
+                }
+            }
+        }
+    }
+}

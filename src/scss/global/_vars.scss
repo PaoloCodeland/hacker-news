@@ -1,7 +1,24 @@
 :root {
+    --white: ghostwhite;
     --text-col: #222;
-    --bg-col: ghostwhite;
+    --bg-col: var(--white);
     --primary: #007bff;
+    --secondary: #ffca22;
+    --tertiary: #a453fe;
+    --quaternary: #4cc3ff;
+    --gradient: linear-gradient(
+        to right,
+        #ff6a5a,
+        #ff348b,
+        #ff23bf,
+        #e23cd8,
+        #bc50ee,
+        #8861ff,
+        #7269ff,
+        #5a70ff,
+        #3d76ff,
+        #007bff
+    );
 
     --main-font: Inter, Avenir, Helvetica, Arial, sans-serif;
     --base-font-size: 1.6rem;
