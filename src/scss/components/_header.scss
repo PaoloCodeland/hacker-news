@@ -32,10 +32,11 @@
                 transition: background 0.3s;
                 &:hover,
                 &:focus {
-                    background: var(--quaternary);
+                    background: var(--tertiary);
                 }
                 &.active {
-                    color: var(--primary);
+                    font-weight: var(--font-bold);
+                    color: var(--quaternary);
                     background: var(--secondary);
                 }
             }
