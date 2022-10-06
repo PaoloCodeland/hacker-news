@@ -20,3 +20,15 @@ body {
     line-height: var(--base-line-height);
     font-weight: var(--font-normal);
 }
+
+main {
+    margin: 3rem 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+svg {
+    display: block;
+}

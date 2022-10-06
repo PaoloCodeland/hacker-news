@@ -1,0 +1,19 @@
+//LAYOUT
+.container {
+    max-width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+// TEXT
+.gradient-text {
+    display: inline-block;
+    background-image: var(--gradient);
+    background-clip: text;
+    color: transparent;
+    &.reverse {
+        background-image: var(--gradient-reverse);
+    }
+}
