@@ -10,10 +10,7 @@
 // TEXT
 .gradient-text {
     display: inline-block;
-    background-image: var(--gradient);
     background-clip: text;
     color: transparent;
-    &.reverse {
-        background-image: var(--gradient-reverse);
-    }
+    background-image: var(--gradient-one);
 }

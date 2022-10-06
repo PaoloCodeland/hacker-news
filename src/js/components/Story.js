@@ -18,19 +18,19 @@ export default function Story({
                         <path d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"/>
                     </svg>
                 </button>
-                <h2 class="title gradient-text">${title}</h2>
+                <h2 class="title"><span class="gradient-text one">${title}</span></h2>
             </header>
             <div class="meta">
                 <span class="user">${user}</span>
                 | <span class="time">${time_ago}</span>
             </div>
             <div class="source">
-                <a class="gradient-text reverse" href="${url}" target="_blank">
+                <a href="${url}" target="_blank">
                     <strong>${domain}</strong>
                 </a>
             </div>
             <footer>
-                <div class="points">${points} points</div>
+                <div class="points"><strong>${points}</strong> points</div>
                 <a href="/item?id=${id}">
                     <strong>${comments_count}</strong> comments
                 </a>
