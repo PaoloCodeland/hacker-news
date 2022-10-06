@@ -11,6 +11,7 @@ body {
     &.is-dark {
         --text-col: ghostwhite;
         --bg-col: #222;
+        --bg-col-secondary: #333;
     }
 
     color: var(--text-col);

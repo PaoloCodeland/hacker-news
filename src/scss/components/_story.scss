@@ -3,7 +3,7 @@
     flex-direction: column;
     height: 100%;
     padding: 1.5rem;
-    background: var(--white);
+    background: var(--bg-col-secondary);
     header {
         position: relative;
         display: flex;
@@ -20,7 +20,7 @@
         margin-right: 1rem;
         margin-bottom: 0.5em;
         color: var(--white);
-        background: var(--text-col);
+        background: var(--black);
     }
     .favorite {
         flex-shrink: 0;
