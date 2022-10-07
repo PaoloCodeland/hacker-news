@@ -37,7 +37,9 @@ export default function Navbar() {
 
     // Navigation
     ul.classList.add('main-navigation');
-    routes.forEach(({ path, label }, index) => {
+    routes.forEach(({ path, label, show }, index) => {
+        if (!show) return;
+
         const li = document.createElement('li');
         const a = document.createElement('a');
         if (index === 0) {
