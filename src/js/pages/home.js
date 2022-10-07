@@ -5,8 +5,10 @@ import StoriesList from '../components/StoriesList';
 export default async function Home() {
     let stories = await fetchHkApi('news');
 
-    view.innerHTML = `<div class="container">
-        <h1>Top Stories</h1>
-        ${StoriesList(stories)}
-    </div>`;
+    const page = document.createElement('div');
+    page.classList.add('container');
+    page.innerHTML = `<h1>Top Stories</h1>`;
+    page.append(StoriesList(stories));
+    view.innerHTML = '';
+    view.append(page);
 }

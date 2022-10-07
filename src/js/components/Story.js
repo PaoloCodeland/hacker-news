@@ -1,3 +1,5 @@
+import { router } from '../router';
+
 export default function Story({
     id,
     title,
@@ -9,9 +11,14 @@ export default function Story({
     comments_count,
     position,
 }) {
-    return `
-        <div class="story">
-            <header>
+    const story = document.createElement('div');
+
+    const navigate = () => {
+        router.navigate('comments/123');
+    };
+
+    story.classList.add('story');
+    story.innerHTML = `<header>
                 <div class="position">${position}</div>
                 <button class="favorite" data-id="${id}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -28,15 +35,27 @@ export default function Story({
                 <a href="${url}" target="_blank">
                     <strong>${domain}</strong>
                 </a>
-            </div>
-            <footer>
-                <a class="comments-cta" href="/item?id=${id}">
-                    <strong>${comments_count}</strong> comments
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15">
-                        <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
-                    </svg>
-                </a>
-                <div class="points"><strong>${points}</strong> points</div>
-            </footer>
-        </div>`;
+            </div>`;
+
+    // Footer
+    const footer = document.createElement('footer');
+    // Cta
+    const cta = document.createElement('button');
+    cta.classList.add('comments-cta');
+    cta.innerHTML = `
+            <strong>${comments_count}</strong> comments
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15">
+                <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
+            </svg>`;
+    cta.addEventListener('click', navigate);
+    footer.append(cta);
+    // Points
+    const pointsStory = document.createElement('div');
+    pointsStory.classList.add('points');
+    pointsStory.innerHTML = `<strong>${points}</strong> points`;
+    footer.append(pointsStory);
+
+    story.append(footer);
+
+    return story;
 }

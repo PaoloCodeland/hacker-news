@@ -37,7 +37,7 @@ export default function Navbar() {
 
     // Navigation
     ul.classList.add('main-navigation');
-    routes.forEach(({ path, label, show }, index) => {
+    routes.forEach(({ path, name, show }, index) => {
         if (!show) return;
 
         const li = document.createElement('li');
@@ -47,7 +47,7 @@ export default function Navbar() {
         }
         a.href = path;
         a.dataset.navigo = '';
-        a.textContent = label;
+        a.textContent = name;
         a.addEventListener('click', toggleActive);
         li.append(a);
         ul.append(li);

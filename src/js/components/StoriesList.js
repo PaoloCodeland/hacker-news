@@ -1,14 +1,13 @@
 import Story from './Story';
 
 export default function StoriesList(stories) {
-    return `<ul class="stories-list">
-        ${stories
-            .map(
-                (story, index) => `
-                    <li>
-                        ${Story({ ...story, position: index + 1 })}
-                    </li>`
-            )
-            .join('')}
-    </ul>`;
+    const ul = document.createElement('ul');
+    ul.classList.add('stories-list');
+
+    stories.forEach((story, index) => {
+        const li = document.createElement('li');
+        li.append(Story({ ...story, position: index + 1 }));
+        ul.append(li);
+    });
+    return ul;
 }
