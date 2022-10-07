@@ -1,20 +1,32 @@
 import { routes } from '../router';
+import ThemeButton from './ThemeButton';
 
 export default function Navbar() {
     const nav = document.createElement('nav');
+    const brand = document.createElement('a');
+    const ul = document.createElement('ul');
+    const actions = document.createElement('div');
+    const hamburger = document.createElement('button');
 
+    // Methods
     const toggleActive = event => {
-        nav.querySelector('a.active').classList.remove('active');
+        ul.querySelector('a.active').classList.remove('active');
         // Brand, so activate home link
         if (event.target.closest('a').classList.contains('brand')) {
-            nav.querySelector('.first').classList.add('active');
+            ul.querySelector('.first').classList.add('active');
         } else {
             event.target.classList.add('active');
         }
     };
 
+    const toggleNav = () => {
+        ul.classList.toggle('active');
+    };
+
+    // Navbar
+    nav.classList.add('app-navbar');
+
     // Brand
-    const brand = document.createElement('a');
     brand.classList.add('brand');
     brand.innerHTML = `
         <img src="/src/assets/vite.svg" alt="Vite Logo" />
@@ -24,7 +36,6 @@ export default function Navbar() {
     nav.append(brand);
 
     // Navigation
-    const ul = document.createElement('ul');
     ul.classList.add('main-navigation');
     routes.forEach(({ path, label }, index) => {
         const li = document.createElement('li');
@@ -41,5 +52,21 @@ export default function Navbar() {
     });
     nav.append(ul);
 
+    // Actions
+    actions.classList.add('flex');
+
+    // Hamburger
+    hamburger.classList.add('hamburger');
+    hamburger.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M18 18v2H6v-2h12zm3-7v2H3v-2h18zm-3-7v2H6V4h12z" fill="ghostwhite" />
+            </svg>
+    `;
+    hamburger.addEventListener('click', toggleNav);
+    actions.append(hamburger);
+
+    // Theme toggler
+    actions.append(ThemeButton());
+    nav.append(actions);
     return nav;
 }

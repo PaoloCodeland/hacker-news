@@ -4,7 +4,7 @@
     border: none;
     border-radius: 0;
     display: block;
-    padding: 1.6rem 2rem;
+    padding: 1.6rem 1rem;
     cursor: pointer;
     outline: none;
     &:hover,
@@ -27,5 +27,11 @@
                 display: block;
             }
         }
+    }
+}
+
+@media (min-width: 480px) {
+    .theme-btn {
+        padding: 1.6rem 2rem;
     }
 }
