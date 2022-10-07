@@ -1,0 +1,31 @@
+.theme-btn {
+    appearance: none;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    display: block;
+    padding: 1.6rem 2rem;
+    cursor: pointer;
+    outline: none;
+    &:hover,
+    &:focus {
+        background: var(--tertiary);
+    }
+    svg {
+        display: block;
+        &:last-child {
+            display: none;
+        }
+    }
+    &.is-dark {
+        svg {
+            display: none;
+            &:first-child {
+                display: none;
+            }
+            &:last-child {
+                display: block;
+            }
+        }
+    }
+}

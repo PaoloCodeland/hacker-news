@@ -1,34 +1,21 @@
-import Header from './components/Header';
-import toggleTheme from './functions/toggleTheme';
 import RouterHandler from './router';
+import Header from './components/Header';
 
 class App {
     constructor() {
         // Refs
         this.$app = document.querySelector('#app');
-        this.$themeBtn = null;
+        this.init();
+    }
 
-        // Init
-        this.RenderGlobals();
+    // Initialize the app
+    init() {
+        this.renderGlobals();
         RouterHandler();
-        this.eventHandlers();
     }
 
-    RenderGlobals() {
-        const parser = new DOMParser();
-        // Header
-        const header = parser.parseFromString(Header(), 'text/html').body
-            .childNodes[0];
-        this.$app.prepend(header);
-
-        this.$themeBtn = document.querySelector('.theme-btn');
-    }
-
-    // Events
-    eventHandlers() {
-        this.$themeBtn.addEventListener('click', () =>
-            toggleTheme(this.$themeBtn)
-        );
+    renderGlobals() {
+        this.$app.prepend(Header());
     }
 }
 
