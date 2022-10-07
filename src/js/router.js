@@ -2,31 +2,37 @@ import Navigo from 'navigo';
 import Home from './pages/home';
 import Page404 from './pages/404';
 
-export default function RouterHandler() {
-    const router = new Navigo('/hacker-news');
-    const routes = [
-        {
-            path: '/',
-            page: Home,
-        },
-        {
-            path: '/new',
-            page: Home,
-        },
-        {
-            path: '/ask',
-            page: Home,
-        },
-        {
-            path: '/show',
-            page: Home,
-        },
-        {
-            path: '/favorites',
-            page: Home,
-        },
-    ];
+export const routes = [
+    {
+        path: '/',
+        page: Home,
+        label: 'Top',
+    },
+    {
+        path: '/new',
+        page: Home,
+        label: 'New',
+    },
+    {
+        path: '/ask',
+        page: Home,
+        label: 'Ask',
+    },
+    {
+        path: '/show',
+        page: Home,
+        label: 'Show',
+    },
+    {
+        path: '/favorites',
+        page: Home,
+        label: 'Favorites',
+    },
+];
 
+const router = new Navigo('/hacker-news');
+
+export default function RouterHandler() {
     routes.forEach(({ path, page }) => {
         router.on(path, () => {
             page(path);
