@@ -25,6 +25,8 @@
     .favorite {
         flex-shrink: 0;
         margin-top: 0.5rem;
+        opacity: 0.35;
+        transition: opacity 0.3s;
         svg {
             width: 2rem;
             height: 2rem;
@@ -34,7 +36,8 @@
             }
         }
         &:hover,
-        &:focus {
+        &.is-favorite {
+            opacity: 1;
             svg {
                 path {
                     fill: var(--tertiary);

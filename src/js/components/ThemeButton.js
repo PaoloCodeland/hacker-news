@@ -1,4 +1,4 @@
-import appReducer from '../state/appReducer';
+import store from '../store';
 
 export default function ThemeButton() {
     const Btn = document.createElement('button');
@@ -7,7 +7,7 @@ export default function ThemeButton() {
         document.body.classList.toggle('is-dark');
         Btn.classList.toggle('is-dark');
 
-        appReducer({
+        store.dispatch({
             type: 'TOGGLE_DARK_MODE',
         });
     };

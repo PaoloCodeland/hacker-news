@@ -1,45 +1,70 @@
 import { router } from '../router';
+import store from '../store';
 
-export default function Story({
-    id,
-    title,
-    user,
-    time_ago,
-    url,
-    domain,
-    points,
-    comments_count,
-    position,
-}) {
-    const story = document.createElement('article');
-    story.dataset.storyId = id;
-
+export default function Story(story) {
+    const {
+        id,
+        title,
+        user,
+        time_ago,
+        url,
+        domain,
+        points,
+        comments_count,
+        position,
+    } = story;
     const navigate = () => {
-        router.navigate(`/comments/${story.dataset.storyId}`);
+        router.navigate(`/comments/${id}`);
+    };
+    const toggleFavorite = event => {
+        event.target.closest('.favorite').classList.toggle('is-favorite');
+        const isFavourite = store
+            .getState()
+            .favourites.find(fav => fav.id === id);
+        if (isFavourite) {
+            store.dispatch({ type: 'REMOVE_FAVORITE', payload: { id } });
+        } else {
+            store.dispatch({
+                type: 'ADD_FAVORITE',
+                payload: story,
+            });
+        }
+        console.log(store.getState());
     };
 
     // Story
-    story.classList.add('story');
-    story.innerHTML = `<header>
-                <div class="position">${position}</div>
-                <button class="favorite">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"/>
-                    </svg>
-                </button>
-                <h2 class="title">
-                    <a href="${url}" target="_blank" class="gradient-text one">${title}</a>
-                </h2>
-            </header>
-            <div class="meta">
-                <span class="user">${user}</span>
-                | <span class="time">${time_ago}</span>
-            </div>
-            <div class="source">
-                <a href="${`https://${domain}`}" target="_blank">
-                    <strong>${domain}</strong>
-                </a>
-            </div>`;
+    const storyEl = document.createElement('article');
+    storyEl.classList.add('story');
+
+    // Header
+    const header = document.createElement('header');
+    const positionEl = document.createElement('div');
+    positionEl.classList.add('position');
+    positionEl.textContent = position;
+    const favoriteEl = document.createElement('button');
+    favoriteEl.classList.add('favorite');
+    favoriteEl.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"/>
+        </svg>`;
+    favoriteEl.addEventListener('click', toggleFavorite);
+    const titleEl = document.createElement('h2');
+    titleEl.classList.add('title');
+    titleEl.innerHTML = `<a href="${url}" target="_blank" class="gradient-text one">${title}</a>`;
+    header.append(positionEl, favoriteEl, titleEl);
+
+    // Content
+    const contentEl = document.createElement('div');
+    contentEl.innerHTML = `
+        <div class="meta">
+            <span class="user">${user}</span>
+            | <span class="time">${time_ago}</span>
+        </div>
+        <div class="source">
+            <a href="${`https://${domain}`}" target="_blank">
+                <strong>${domain}</strong>
+            </a>
+        </div>`;
 
     // Footer
     const footer = document.createElement('footer');
@@ -61,7 +86,7 @@ export default function Story({
     pointsStory.innerHTML = `<strong>${points}</strong> points`;
     footer.append(pointsStory);
 
-    story.append(footer);
+    storyEl.append(header, contentEl, footer);
 
-    return story;
+    return storyEl;
 }
