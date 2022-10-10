@@ -11,7 +11,8 @@ export default async function Favorites() {
 
     const placeholder = document.createElement('div');
     placeholder.classList.add('placeholder');
-    placeholder.innerHTML = 'No favorites yet';
+    placeholder.innerHTML =
+        'You dont have any favorites yet. Click the star icon on any story to add it to your favorites list.';
 
     page.append(favorites.length ? StoriesList(favorites) : placeholder);
 
