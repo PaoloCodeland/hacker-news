@@ -24,8 +24,8 @@ class App {
 
         const data = JSON.parse(localStorage.getItem('pdhn-data'));
         initialState.isDarkMode = data.isDarkMode;
-        if (initialState.isDarkMode) {
-            document.body.classList.toggle('is-dark');
+        if (!initialState.isDarkMode) {
+            document.body.classList.remove('is-dark');
         }
         if (data.favourites.length > 0) {
             initialState.favourites = data.favourites;

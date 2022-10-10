@@ -6,6 +6,7 @@ import Show from './pages/show';
 import Favorites from './pages/favorites';
 import Comments from './pages/comments';
 import Page404 from './pages/404';
+import backToTop from './utils/backToTop';
 
 export const routes = [
     {
@@ -47,6 +48,12 @@ export const routes = [
 ];
 
 export const router = new Navigo('/hacker-news');
+
+router.hooks({
+    after: () => {
+        backToTop();
+    },
+});
 
 export default function RouterHandler() {
     routes.forEach(({ path, page }) => {
