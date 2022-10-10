@@ -1,5 +1,4 @@
 export default function Comment(comment) {
-    console.log(comment);
     const { user, time_ago, content, comments } = comment;
 
     const toggleReplies = e => {

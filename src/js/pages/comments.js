@@ -1,6 +1,6 @@
-import view from '../utils/view';
 import { fetchHkApi } from '../utils/fetchApi';
 import CommentsList from '../components/CommentsList';
+import View from '../components/View';
 
 export default async function Comment(data) {
     const storyId = data.id;
@@ -8,11 +8,8 @@ export default async function Comment(data) {
         `item/${storyId}`
     );
 
-    const page = document.createElement('div');
-    page.classList.add('container');
-    page.innerHTML = `<h1 class="title">
-            <a href="${url}" target="_blank" class="gradient-text one">${title}</a>
-        </h1>
+    const content = document.createElement('div');
+    content.innerHTML = `
         <div class="meta">
             <span class="user">${user}</span>
             | <span class="time">${time_ago}</span>
@@ -20,8 +17,10 @@ export default async function Comment(data) {
                 <strong>${domain}</strong>
             </a>
         </div>`;
-    page.append(CommentsList(comments));
+    content.append(CommentsList(comments));
 
-    view.innerHTML = '';
-    view.append(page);
+    View(
+        `<a href="${url}" target="_blank" class="gradient-text one">${title}</a>`,
+        content
+    );
 }
