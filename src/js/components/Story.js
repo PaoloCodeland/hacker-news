@@ -52,7 +52,9 @@ export default function Story({
                 <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
             </svg>`;
     cta.addEventListener('click', navigate);
-    footer.append(cta);
+    const textCta = document.createElement('div');
+    textCta.innerHTML = `<strong>0</strong> comments`;
+    footer.append(comments_count > 0 ? cta : textCta);
     // Points
     const pointsStory = document.createElement('div');
     pointsStory.classList.add('points');

@@ -13,7 +13,7 @@ export default function Navbar() {
         ul.querySelector('a.active').classList.remove('active');
         // Brand, so activate home link
         if (event.target.closest('a').classList.contains('brand')) {
-            ul.querySelector('.first').classList.add('active');
+            ul.querySelector('a').classList.add('active');
             router.navigate('/');
         } else {
             event.target.classList.add('active');
@@ -38,18 +38,21 @@ export default function Navbar() {
 
     // Navigation
     ul.classList.add('main-navigation');
-    routes.forEach(({ path, name, show }, index) => {
+    routes.forEach(({ path, name, show }) => {
         if (!show) return;
 
         const li = document.createElement('li');
         const a = document.createElement('a');
-        if (index === 0) {
-            a.classList.add('active', 'first');
-        }
         a.href = path;
         a.dataset.navigo = '';
         a.textContent = name;
+        // Browser reload on specific path
+        if (path === `/${router.getCurrentLocation().url}`) {
+            a.classList.add('active');
+        }
         a.addEventListener('click', toggleActive);
+        console.log('Location', router.getCurrentLocation());
+
         li.append(a);
         ul.append(li);
     });

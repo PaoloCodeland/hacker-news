@@ -39,7 +39,7 @@ export const routes = [
         path: '/comments/:id',
         page: Comments,
         name: 'Comments',
-        show: true,
+        show: false,
     },
 ];
 
