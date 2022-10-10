@@ -13,17 +13,17 @@
     }
     svg {
         display: block;
-        &:last-child {
+        &.sun {
             display: none;
         }
     }
     &.is-dark {
         svg {
             display: none;
-            &:first-child {
+            &.moon {
                 display: none;
             }
-            &:last-child {
+            &.sun {
                 display: block;
             }
         }

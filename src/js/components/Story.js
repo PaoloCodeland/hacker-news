@@ -60,6 +60,7 @@ export default function Story(story) {
 
     // Content
     const contentEl = document.createElement('div');
+    contentEl.classList.add('content');
     contentEl.innerHTML = `
         <div class="meta">
             <span class="user">${user}</span>
