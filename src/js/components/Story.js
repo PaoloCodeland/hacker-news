@@ -11,7 +11,7 @@ export default function Story({
     comments_count,
     position,
 }) {
-    const story = document.createElement('div');
+    const story = document.createElement('article');
     story.dataset.storyId = id;
 
     const navigate = () => {

@@ -1,0 +1,38 @@
+.comment {
+    margin-bottom: 2rem;
+    background: var(--bg-col-secondary);
+    header {
+        padding: 1.5rem 1.5rem 0;
+        .time {
+            font-size: 1.4rem;
+        }
+    }
+    .content {
+        padding: 1.5rem;
+        a {
+            display: inline-block;
+            background-clip: text;
+            color: transparent;
+            background-image: var(--gradient-one);
+        }
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .replies-toggle {
+        padding: 0 1.5rem 1.5rem;
+    }
+    .replies {
+        display: none;
+        color: var(--white);
+        background: var(--black);
+        &.active {
+            display: block;
+        }
+    }
+    .reply {
+        &:not(:last-child) {
+            border-bottom: 1px solid rgba(white, 0.2);
+        }
+    }
+}

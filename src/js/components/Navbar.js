@@ -10,7 +10,7 @@ export default function Navbar() {
 
     // Methods
     const toggleActive = event => {
-        ul.querySelector('a.active').classList.remove('active');
+        ul.querySelector('a.active')?.classList.remove('active');
         // Brand, so activate home link
         if (event.target.closest('a').classList.contains('brand')) {
             ul.querySelector('a').classList.add('active');
@@ -51,8 +51,6 @@ export default function Navbar() {
             a.classList.add('active');
         }
         a.addEventListener('click', toggleActive);
-        console.log('Location', router.getCurrentLocation());
-
         li.append(a);
         ul.append(li);
     });
