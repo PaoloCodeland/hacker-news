@@ -1,5 +1,5 @@
 import view from '../utils/view';
-import { fetchHkApi } from '../functions/fetchApi';
+import { fetchHkApi } from '../utils/fetchApi';
 import CommentsList from '../components/CommentsList';
 
 export default async function Comment(data) {

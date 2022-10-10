@@ -1,4 +1,4 @@
-import { fetchHkApi } from '../functions/fetchApi';
+import { fetchHkApi } from '../utils/fetchApi';
 import view from '../utils/view';
 import StoriesList from '../components/StoriesList';
 

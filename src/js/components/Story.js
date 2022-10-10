@@ -1,5 +1,6 @@
 import { router } from '../router';
 import store from '../store';
+import getFavorite from '../utils/getFavorite';
 
 export default function Story(story) {
     const {
@@ -18,9 +19,7 @@ export default function Story(story) {
     };
     const toggleFavorite = event => {
         event.target.closest('.favorite').classList.toggle('is-favorite');
-        const isFavourite = store
-            .getState()
-            .favourites.find(fav => fav.id === id);
+        const isFavourite = getFavorite(id);
         if (isFavourite) {
             store.dispatch({ type: 'REMOVE_FAVORITE', payload: { id } });
         } else {
@@ -28,7 +27,7 @@ export default function Story(story) {
                 type: 'ADD_FAVORITE',
                 payload: {
                     ...story,
-                    isFavourite: true,
+                    isFavorite: true,
                 },
             });
         }
@@ -45,9 +44,10 @@ export default function Story(story) {
     positionEl.classList.add('position');
     positionEl.textContent = position;
     const favoriteEl = document.createElement('button');
-    favoriteEl.classList.add(
-        story.isFavourite ? 'favorite is-favorite' : 'favorite'
-    );
+    favoriteEl.classList.add('favorite');
+    if (getFavorite(id)) {
+        favoriteEl.classList.add('is-favorite');
+    }
     favoriteEl.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"/>
