@@ -1,5 +1,6 @@
 import { router, routes } from '../router';
 import ThemeButton from './ThemeButton';
+import Logo from '../../assets/vite.svg';
 
 export default function Navbar() {
     const nav = document.createElement('nav');
@@ -32,7 +33,7 @@ export default function Navbar() {
     brand.classList.add('brand');
     brand.dataset.navigo = '';
     brand.innerHTML = `
-        <img src="/src/assets/vite.svg" alt="Vite Logo" />
+        <img src="${Logo}" alt="Paolo's Hacker News" />
         <span>Paolo's <strong>Hacker News</strong></span>
     `;
     brand.addEventListener('click', toggleActive);
