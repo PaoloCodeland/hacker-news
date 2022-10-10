@@ -12,27 +12,31 @@ export default function Story({
     position,
 }) {
     const story = document.createElement('div');
+    story.dataset.storyId = id;
 
     const navigate = () => {
-        router.navigate('comments/123');
+        router.navigate(`/comments/${story.dataset.storyId}`);
     };
 
+    // Story
     story.classList.add('story');
     story.innerHTML = `<header>
                 <div class="position">${position}</div>
-                <button class="favorite" data-id="${id}">
+                <button class="favorite">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"/>
                     </svg>
                 </button>
-                <h2 class="title"><span class="gradient-text one">${title}</span></h2>
+                <h2 class="title">
+                    <a href="${url}" target="_blank" class="gradient-text one">${title}</a>
+                </h2>
             </header>
             <div class="meta">
                 <span class="user">${user}</span>
                 | <span class="time">${time_ago}</span>
             </div>
             <div class="source">
-                <a href="${url}" target="_blank">
+                <a href="${`https://${domain}`}" target="_blank">
                     <strong>${domain}</strong>
                 </a>
             </div>`;

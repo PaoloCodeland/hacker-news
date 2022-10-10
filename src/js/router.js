@@ -39,7 +39,7 @@ export const routes = [
         path: '/comments/:id',
         page: Comments,
         name: 'Comments',
-        show: false,
+        show: true,
     },
 ];
 
@@ -47,8 +47,8 @@ export const router = new Navigo('/hacker-news');
 
 export default function RouterHandler() {
     routes.forEach(({ path, page }) => {
-        router.on(path, () => {
-            page();
+        router.on(path, ({ data }) => {
+            page(data);
         });
     });
 

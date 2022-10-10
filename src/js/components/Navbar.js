@@ -1,4 +1,4 @@
-import { routes } from '../router';
+import { router, routes } from '../router';
 import ThemeButton from './ThemeButton';
 
 export default function Navbar() {
@@ -14,6 +14,7 @@ export default function Navbar() {
         // Brand, so activate home link
         if (event.target.closest('a').classList.contains('brand')) {
             ul.querySelector('.first').classList.add('active');
+            router.navigate('/');
         } else {
             event.target.classList.add('active');
         }
@@ -28,12 +29,12 @@ export default function Navbar() {
 
     // Brand
     brand.classList.add('brand');
+    brand.dataset.navigo = '';
     brand.innerHTML = `
         <img src="/src/assets/vite.svg" alt="Vite Logo" />
         <span>Paolo's <strong>Hacker News</strong></span>
     `;
     brand.addEventListener('click', toggleActive);
-    nav.append(brand);
 
     // Navigation
     ul.classList.add('main-navigation');
@@ -52,7 +53,6 @@ export default function Navbar() {
         li.append(a);
         ul.append(li);
     });
-    nav.append(ul);
 
     // Actions
     actions.classList.add('flex');
@@ -69,6 +69,7 @@ export default function Navbar() {
 
     // Theme toggler
     actions.append(ThemeButton());
-    nav.append(actions);
+
+    nav.append(brand, ul, actions);
     return nav;
 }
