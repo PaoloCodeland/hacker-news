@@ -1,8 +1,10 @@
 import { fetchHkApi } from '../utils/fetchApi';
 import CommentsList from '../components/CommentsList';
-import View from '../components/View';
+import View, { viewEl } from '../components/View';
 
 export default async function Comment(data) {
+    viewEl.innerHTML = '';
+
     const storyId = data.id;
     const { title, url, user, time_ago, domain, comments } = await fetchHkApi(
         `item/${storyId}`

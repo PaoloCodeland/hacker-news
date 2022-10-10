@@ -1,8 +1,8 @@
-export default function View(title, children) {
-    const viewEl = document.querySelector('#router-outlet');
+export const viewEl = document.querySelector('#router-outlet');
 
+export default function View(title, children) {
     const page = document.createElement('div');
-    page.classList.add('container');
+    page.classList.add('app-page', 'container');
     page.innerHTML = `<h1>${title}</h1>`;
     page.append(children);
 
