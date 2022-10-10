@@ -8,25 +8,7 @@ export const routes = [
     {
         path: '/',
         page: Home,
-        name: 'Top',
-        show: true,
-    },
-    {
-        path: '/new',
-        page: New,
-        name: 'New',
-        show: true,
-    },
-    {
-        path: '/ask',
-        page: Home,
-        name: 'Ask',
-        show: true,
-    },
-    {
-        path: '/show',
-        page: Home,
-        name: 'Show',
+        name: 'Home',
         show: true,
     },
     {
