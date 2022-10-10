@@ -4,24 +4,25 @@ import ThemeButton from './ThemeButton';
 export default function Navbar() {
     const nav = document.createElement('nav');
     const brand = document.createElement('a');
-    const ul = document.createElement('ul');
+    const mainNavigation = document.createElement('ul');
     const actions = document.createElement('div');
     const hamburger = document.createElement('button');
 
     // Methods
     const toggleActive = event => {
-        ul.querySelector('a.active')?.classList.remove('active');
+        mainNavigation.querySelector('a.active')?.classList.remove('active');
         // Brand, so activate home link
         if (event.target.closest('a').classList.contains('brand')) {
-            ul.querySelector('a').classList.add('active');
+            mainNavigation.querySelector('a').classList.add('active');
             router.navigate('/');
         } else {
             event.target.classList.add('active');
         }
+        mainNavigation.classList.remove('active');
     };
 
     const toggleNav = () => {
-        ul.classList.toggle('active');
+        mainNavigation.classList.toggle('active');
     };
 
     // Navbar
@@ -37,7 +38,7 @@ export default function Navbar() {
     brand.addEventListener('click', toggleActive);
 
     // Navigation
-    ul.classList.add('main-navigation');
+    mainNavigation.classList.add('main-navigation');
     routes.forEach(({ path, name, show }) => {
         if (!show) return;
 
@@ -52,7 +53,7 @@ export default function Navbar() {
         }
         a.addEventListener('click', toggleActive);
         li.append(a);
-        ul.append(li);
+        mainNavigation.append(li);
     });
 
     // Actions
@@ -71,6 +72,6 @@ export default function Navbar() {
     // Theme toggler
     actions.append(ThemeButton());
 
-    nav.append(brand, ul, actions);
+    nav.append(brand, mainNavigation, actions);
     return nav;
 }

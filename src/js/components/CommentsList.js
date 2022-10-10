@@ -8,7 +8,6 @@ export default function CommentsList(comments) {
     const title = document.createElement('h2');
     title.classList.add('title');
     title.innerText = 'Comments';
-    commentsList.appendChild(title);
 
     // List
     const ul = document.createElement('ul');
@@ -17,7 +16,8 @@ export default function CommentsList(comments) {
         li.append(Comment(comment));
         ul.append(li);
     });
-    commentsList.append(ul);
+
+    commentsList.append(title, ul);
 
     return commentsList;
 }

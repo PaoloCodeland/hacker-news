@@ -26,7 +26,6 @@ export default function Comment(comment) {
         repliesToggle.classList.add('replies-toggle', 'gradient-text');
         repliesToggle.innerHTML = 'Show Replies';
         repliesToggle.addEventListener('click', toggleReplies);
-        commentEl.append(repliesToggle);
 
         // Replies List
         const replies = document.createElement('div');
@@ -41,7 +40,7 @@ export default function Comment(comment) {
             <div class="content">${reply.content}</div>`;
             replies.append(replyEl);
         });
-        commentEl.append(replies);
+        commentEl.append(repliesToggle, replies);
     }
     return commentEl;
 }
