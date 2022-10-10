@@ -1,6 +1,8 @@
 import Navigo from 'navigo';
 import Home from './pages/home';
 import New from './pages/new';
+import Ask from './pages/ask';
+import Show from './pages/show';
 import Comments from './pages/comments';
 import Page404 from './pages/404';
 
@@ -9,6 +11,24 @@ export const routes = [
         path: '/',
         page: Home,
         name: 'Home',
+        show: true,
+    },
+    {
+        path: '/new',
+        page: New,
+        name: 'New',
+        show: true,
+    },
+    {
+        path: '/ask',
+        page: Ask,
+        name: 'Ask',
+        show: true,
+    },
+    {
+        path: '/show',
+        page: Show,
+        name: 'Show',
         show: true,
     },
     {
